@@ -19,10 +19,10 @@ public class TesteFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_teste, container, false);
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        texto.findViewById(R.id.txtTeste);
-        texto.setText("Queijo Ralado");
-    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        //texto.findViewById(R.id.txtTeste);
+//        //texto.setText("Queijo Ralado");
+//    }
 }
