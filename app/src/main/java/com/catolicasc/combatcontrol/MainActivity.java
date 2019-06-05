@@ -1,6 +1,5 @@
 package com.catolicasc.combatcontrol;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,6 +42,8 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        this.setTitle("Combates");
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -85,10 +86,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_combates) {
-
-        } else if (id == R.id.nav_teste) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TesteFragment()).commit();
+            this.setTitle("Combates");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         } else if (id == R.id.nav_historico) {
+            this.setTitle("Histórico");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
         }
 
