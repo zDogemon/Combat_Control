@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity
         this.setTitle("Combates");
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override

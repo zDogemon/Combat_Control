@@ -5,11 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnCadastrar;
     private Button btnLogar;
+    private EditText editLogin;
+    private EditText editSenha;
+
+   // FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
                openActivity_Login();
            }
        });
+
+        editSenha = findViewById(R.id.editSenha);
+        editLogin = findViewById(R.id.editLogin);
     }
 
 
@@ -47,4 +55,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
 }
