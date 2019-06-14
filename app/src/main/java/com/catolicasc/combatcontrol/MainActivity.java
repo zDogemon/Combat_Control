@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_combates) {
-            this.setTitle("Combates");
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
+            //this.setTitle("Combates");
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         } else if (id == R.id.nav_historico) {
-            this.setTitle("Histórico");
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
+            //this.setTitle("Histórico");
+            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
