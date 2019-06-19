@@ -143,12 +143,15 @@
 
     <Button
         android:id="@+id/btnRobo1Dano"
+        style="@android:style/Widget.Button"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
+        android:background="#a61d3d"
         android:text="DANO"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/btnRobo2Dano"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRobo1Agressividade" />
@@ -159,7 +162,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="64dp"
+        android:background="#a61d3d"
         android:text="Dano"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRobo2Agressividade" />
 
@@ -170,7 +175,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:background="#a61d3d"
         android:text="Agressividade"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/btnRobo2Agressividade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRobo1Dano" />
@@ -181,7 +188,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="64dp"
+        android:background="#a61d3d"
         android:text="Agressividade"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRobo2Dano" />
 
@@ -192,7 +201,9 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
+        android:background="#a61d3d"
         android:text="Nocaute"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toStartOf="@+id/btnRobo2Nocaute"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRobo1Agressividade" />
@@ -203,8 +214,39 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="64dp"
+        android:background="#a61d3d"
         android:text="Nocaute"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRobo2Agressividade" />
+
+    <TextView
+        android:id="@+id/txtCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="00:00"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRobo1Nocaute" />
+
+    <Button
+        android:id="@+id/btnPararCronometro"
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="#a61d3d"
+        android:text="Parar Cronômetro"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCronometro" />
 
 </android.support.constraint.ConstraintLayout>
