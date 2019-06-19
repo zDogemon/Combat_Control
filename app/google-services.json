@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "462475866885",
+    "firebase_url": "https://combatcontrol-b7674.firebaseio.com",
+    "project_id": "combatcontrol-b7674",
+    "storage_bucket": "combatcontrol-b7674.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462475866885:android:f0352a74bfa86a4a",
+        "android_client_info": {
+          "package_name": "com.catolicasc.combatcontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462475866885-71mkvmdrpppj8jq5qpvchj101g6f2qet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.catolicasc.combatcontrol",
+            "certificate_hash": "e985d78fc763b622b032fedf30d6a244a4da9ea4"
+          }
+        },
+        {
+          "client_id": "462475866885-9bndqoj9lo43pr8ca6mm416gkvtjqcqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmiSjY-ryjS9t0batOeZI_u26jriPTeJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462475866885-9bndqoj9lo43pr8ca6mm416gkvtjqcqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
