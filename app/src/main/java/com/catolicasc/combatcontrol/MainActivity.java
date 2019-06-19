@@ -1,5 +1,6 @@
 package com.catolicasc.combatcontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -88,11 +89,12 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_combates) {
-            //this.setTitle("Combates");
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
+            this.setTitle("Combates");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         } else if (id == R.id.nav_historico) {
             //this.setTitle("Histórico");
             //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
+            startActivity(new Intent(MainActivity.this, CombateActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
