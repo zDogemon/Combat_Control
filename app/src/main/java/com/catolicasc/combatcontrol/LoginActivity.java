@@ -25,31 +25,25 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editSenha;
     private FirebaseAuth auth;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //to-do
 
         btnCadastrar = findViewById(R.id.btnCadastrar);
 
-       btnLogar = findViewById(R.id.btnLogar);
-       btnLogar.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               openActivity_Login();
-           }
-       });
+        btnLogar = findViewById(R.id.btnLogar);
+        btnLogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivity_Login();
+            }
+        });
 
-       editSenha = findViewById(R.id.editSenha);
-       editLogin = findViewById(R.id.editLogin);
+        editSenha = findViewById(R.id.editSenha);
+        editLogin = findViewById(R.id.editLogin);
 
-       eventoClicks();
-
-
-
+        eventoClicks();
     }
 
 
@@ -67,31 +61,36 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = editLogin.getText().toString().trim();
                 String senha = editSenha.getText().toString().trim();
-                login(email,senha);
+                login(email, senha);
             }
         });
     }
 
     private void login(String email, String senha) {
-        auth.signInWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(i);
-                        }else{
-                            alert("e-mail ou senha inválidos");
+        try {
+            auth.signInWithEmailAndPassword(email, senha)
+                    .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(i);
+                            } else {
+                                alert("E-mail ou senha inválidos");
+                            }
                         }
-                    }
-                });
+                    });
+        } catch (Exception e) {
+            alert("Preencha todos os campos");
+        }
+
     }
 
     private void alert(String msg) {
-        Toast.makeText(LoginActivity.this,msg,Toast.LENGTH_SHORT).show();
+        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public void openActivity_Login(){
+    public void openActivity_Login() {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
