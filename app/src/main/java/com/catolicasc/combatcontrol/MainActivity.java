@@ -11,6 +11,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,17 +26,25 @@ public class MainActivity extends AppCompatActivity
     private FirebaseAuth auth;
     private FirebaseUser user;
 
+    private TextView nomeEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+//        View headerView = navigationView.getHeaderView(0);
+//        TextView nomeEmail = (TextView) headerView.findViewById(R.id.nomeEmail);
+//        nomeEmail.setText(email);
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -97,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_historico) {
             //this.setTitle("Histórico");
             //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
-            startActivity(new Intent(MainActivity.this, CombateActivity.class));
+            startActivity(new Intent(MainActivity.this, LobbyActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

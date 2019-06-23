@@ -8,29 +8,16 @@
 
     <TextView
         android:id="@+id/txtComeca"
-        android:layout_width="351dp"
-        android:layout_height="53dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="51dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="90dp"
         android:text="A PARTIDA COMEÇA EM"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edtTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:inputType="time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtComeca" />
 
     <Button
         android:id="@+id/btnVoltar"
@@ -44,13 +31,27 @@
 
     <Button
         android:id="@+id/btnEntrar"
-        android:layout_width="182dp"
-        android:layout_height="155dp"
+        android:layout_width="129dp"
+        android:layout_height="58dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
+        android:background="@android:color/holo_green_dark"
         android:text="Entrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTimer" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCronometro" />
+
+    <TextView
+        android:id="@+id/txtCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="150dp"
+        android:text="03:00"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtComeca" />
 </android.support.constraint.ConstraintLayout>

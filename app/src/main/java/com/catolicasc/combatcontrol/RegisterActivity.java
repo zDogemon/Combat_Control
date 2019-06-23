@@ -16,8 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText EditLogin;
-    private EditText EditNome;
+    public EditText EditLogin;
     private EditText EditSenha;
     private Button btnCadastrar;
     private FirebaseAuth auth;
@@ -31,16 +30,15 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void eventoClicks() {
+    public void eventoClicks() {
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 String email = EditLogin.getText().toString().trim();
-                String nome = EditNome.getText().toString().trim();
                 String senha = EditSenha.getText().toString().trim();
-                CriarUser (email, senha);
+
             }
         });
 
@@ -48,20 +46,24 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void CriarUser(String email, String senha) {
-        auth.createUserWithEmailAndPassword(email, senha)
-                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            alert("Usuário cadastrado com sucesso");
-                            Intent i = new Intent(RegisterActivity.this,MainActivity.class);
-                            startActivity(i);
-                            finish();
-                        }else
-                            alert("Erro ao cadastrar usuário");
+        try {
+            auth.createUserWithEmailAndPassword(email, senha)
+                    .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                alert("Usuário cadastrado com sucesso");
+                                Intent i = new Intent(RegisterActivity.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
+                            } else
+                                alert("Erro ao cadastrar usuário");
                         }
 
-                });
+                    });
+        }catch (Exception e) {
+            alert("Preencha todos os campos");
+        }
     }
 
     private void alert (String msg){
@@ -71,7 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
     private void ininicializaComponentes() {
 
         EditLogin = (EditText) findViewById(R.id.editLogin);
-        EditNome = (EditText) findViewById(R.id.editNome);
         EditSenha = (EditText) findViewById(R.id.editSenha);
         btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
     }
