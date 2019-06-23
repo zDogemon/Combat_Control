@@ -5,19 +5,16 @@ import android.support.annotation.NonNull;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Conexão {
+public class Connection {
 
     private static FirebaseAuth firebaseAuth;
     private static FirebaseAuth.AuthStateListener authStateListener;
     private static FirebaseUser firebaseUser;
 
-    private Conexão (){
-
-
+    private Connection(){
     }
 
     public static FirebaseAuth  getFirebaseAuth(){
-
         if (firebaseAuth == null) {
             inicializarFirebaseAuth();
 
@@ -40,14 +37,10 @@ public class Conexão {
         };
 
         firebaseAuth.addAuthStateListener(authStateListener);
-
     }
 
     public static FirebaseUser getFirebaseUser(){
-
         return firebaseUser;
-
-
     }
     public static void logOut(){
         firebaseAuth.signOut();
