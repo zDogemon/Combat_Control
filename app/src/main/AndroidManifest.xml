@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EncerramentoActivity" android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".ResetSenhaActivity"></activity>
+        <activity
+            android:name=".EncerramentoActivity"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".CombateActivity"
             android:theme="@style/AppTheme.NoActionBar" />

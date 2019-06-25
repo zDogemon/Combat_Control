@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editLogin;
     private EditText editSenha;
     private FirebaseAuth auth;
+    private TextView resetSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,18 @@ public class LoginActivity extends AppCompatActivity {
 
         editSenha = findViewById(R.id.editSenha);
         editLogin = findViewById(R.id.editLogin);
+
+
+        resetSenha = findViewById(R.id.resetSennha);
+        resetSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LoginActivity.this, ResetSenhaActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 
         eventoClicks();
     }
@@ -96,9 +110,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
         auth = Connection.getFirebaseAuth();
     }
+
 }
