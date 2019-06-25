@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.catolicasc.combatcontrol">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CombateActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".EncerramentoActivity" android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity
+            android:name=".CombateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LobbyActivity" />
-        <activity android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,10 +32,10 @@
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBNHgGEKI5VutmEOSHTFWPSRUKJS2HdVt8"/>
+            android:value="AIzaSyBNHgGEKI5VutmEOSHTFWPSRUKJS2HdVt8" />
     </application>
-
 
 </manifest>

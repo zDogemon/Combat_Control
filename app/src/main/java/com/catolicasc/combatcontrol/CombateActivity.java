@@ -115,6 +115,20 @@ public class CombateActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // Botão de encerrar a partida
+        btnEncerrarPartida.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent it = new Intent(CombateActivity.this, EncerramentoActivity.class);
+                it.putExtra("vencedor", "minotauro");
+                it.putExtra("pontuacao1", "1");
+                it.putExtra("pontuacao2", "2");
+                it.putExtra("nocaute", " ");
+                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(it);
+                finish();
+            }
+        });
     }
 
     private void startTimer() {

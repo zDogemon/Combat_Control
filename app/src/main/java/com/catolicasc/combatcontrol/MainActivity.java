@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
-//        View headerView = navigationView.getHeaderView(0);
-//        TextView nomeEmail = (TextView) headerView.findViewById(R.id.nomeEmail);
-//        nomeEmail.setText(email);
+//
+////        View headerView = navigationView.getHeaderView(0);
+////        TextView nomeEmail = (TextView) headerView.findViewById(R.id.nomeEmail);
+////        nomeEmail.setText(email);
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
