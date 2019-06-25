@@ -20,6 +20,8 @@ public class CombateActivity extends AppCompatActivity {
 
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
+    private TextView txtRobo1;
+    private TextView txtRobo2;
     private TextView txtRobo1Dano;
     private TextView txtRobo2Dano;
     private TextView txtRobo1Agressividade;
@@ -35,11 +37,15 @@ public class CombateActivity extends AppCompatActivity {
     private Button btnCronometro;
     private Button btnEncerrarPartida;
 
+    private boolean nocaute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combate);
 
+        txtRobo1 = findViewById(R.id.txtRobo1);
+        txtRobo2 = findViewById(R.id.txtRobo2);
         txtRobo1Dano = findViewById(R.id.txtRobo1Dano);
         txtRobo2Dano = findViewById(R.id.txtRobo2Dano);
         txtRobo1Agressividade = findViewById(R.id.txtRobo1Agressividade);
@@ -54,6 +60,8 @@ public class CombateActivity extends AppCompatActivity {
         btnRobo2Nocaute = findViewById(R.id.btnRobo2Nocaute);
         btnCronometro = findViewById(R.id.btnPararCronometro);
         btnEncerrarPartida = findViewById(R.id.btnEncerrarPartida);
+
+        nocaute = false;
 
         btnCronometro.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -116,19 +124,41 @@ public class CombateActivity extends AppCompatActivity {
             }
         });
 
+        // Botão de Nocaute do Robô 1
+        btnRobo1Nocaute.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                nocaute = true;
+            }
+        });
+
+        // Botão de Nocaute do Robô 2
+        btnRobo2Nocaute.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                nocaute = true;
+            }
+        });
+
         // Botão de encerrar a partida
         btnEncerrarPartida.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Intent it = new Intent(CombateActivity.this, EncerramentoActivity.class);
-                it.putExtra("vencedor", "minotauro");
-                it.putExtra("pontuacao1", "1");
-                it.putExtra("pontuacao2", "2");
-                it.putExtra("nocaute", " ");
-                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                int pontuacao1 = (Integer.parseInt(txtRobo1Agressividade.getText().toString())) + (Integer.parseInt(txtRobo1Dano.getText().toString()));
+                int pontuacao2 = (Integer.parseInt(txtRobo2Agressividade.getText().toString())) + (Integer.parseInt(txtRobo2Dano.getText().toString()));
+                if (pontuacao1 > pontuacao2) {
+                    it.putExtra("vencedor", txtRobo1.getText().toString());
+                } else {
+                    it.putExtra("vencedor", txtRobo2.getText().toString());
+                }
+                it.putExtra("pontuacao1", pontuacao1 + "");
+                it.putExtra("pontuacao2", pontuacao2 + "");
+                if (nocaute == true) it.putExtra("nocaute", "Nocaute!");
+                else it.putExtra("nocaute", " ");
+
                 startActivity(it);
-                finish();
+                CombateActivity.this.finish();
             }
         });
+
     }
 
     private void startTimer() {
