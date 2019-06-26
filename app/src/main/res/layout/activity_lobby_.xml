@@ -13,7 +13,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="90dp"
-        android:text="A PARTIDA COMEÇA EM"
+        android:text="A partida começa em:"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,13 +31,14 @@
 
     <Button
         android:id="@+id/btnEntrar"
-        android:layout_width="129dp"
-        android:layout_height="58dp"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
-        android:background="@android:color/holo_green_dark"
+        android:background="#a61d3d"
         android:text="Entrar"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCronometro" />
@@ -51,6 +52,7 @@
         android:layout_marginEnd="150dp"
         android:text="03:00"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt1" />
