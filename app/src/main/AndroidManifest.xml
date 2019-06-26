@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetSenhaActivity" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".RobosListAdapter"></activity>
+        <activity
+            android:name=".ResetSenhaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".EncerramentoActivity"
             android:theme="@style/AppTheme.CustomTheme" />
@@ -21,7 +24,9 @@
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LobbyActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".LobbyActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
