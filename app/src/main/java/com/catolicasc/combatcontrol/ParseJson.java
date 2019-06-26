@@ -17,25 +17,28 @@ public class ParseJson {
         robos = new ArrayList<>();
     }
 
-    public List<Robo> getPokemons() {
+    public List<Robo> getRobos() {
         return robos;
     }
-}
+
 
 //    public boolean parse(String jsonString) {
 //        try {
 //            JSONObject json = new JSONObject(jsonString);
-//            JSONArray pokemons = json.getJSONArray("pokemon");
+//            JSONArray robos = json.getJSONArray("robo");
 //
 //            for (int i = 0; i < robos.length(); i++) {
 //                JSONObject Robo = robos.getJSONObject(i);
 //                Robo p = new Robo();
-//                p.setNome(Robo.getString("name"));
+//                p.setNome(Robo.getString("nome"));
+//
+//                this.robos.add(p);
 //            }
+//
 //            return true;
 //        } catch (JSONException e) {
 //            Log.e(TAG, "parse: erro ao fazer parse do JSON: " + e.getMessage());
 //            return false;
 //        }
 //    }
-//}
+}

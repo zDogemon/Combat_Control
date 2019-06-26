@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".RobosListAdapter">
 
+    <TextView
+        android:id="@+id/txtRobo2"
+        android:layout_width="94dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="70dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRobo1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtRobo1"
+        android:layout_width="94dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtRobo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

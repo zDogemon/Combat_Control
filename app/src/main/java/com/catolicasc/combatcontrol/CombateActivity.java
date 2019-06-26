@@ -44,7 +44,7 @@ public class CombateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combate);
 
-        txtRobo1 = findViewById(R.id.txtRobo1);
+        txtRobo1 = findViewById(R.id.txtRobo2);
         txtRobo2 = findViewById(R.id.txtRobo2);
         txtRobo1Dano = findViewById(R.id.txtRobo1Dano);
         txtRobo2Dano = findViewById(R.id.txtRobo2Dano);
