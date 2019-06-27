@@ -5,8 +5,9 @@ public class Robo implements Serializable{
 
     private String nome;
 
-    public Robo (String nome){
-        this.nome = nome;
+
+    public Robo() {
+
     }
 
     public String getNome() {

@@ -22,23 +22,23 @@ public class ParseJson {
     }
 
 
-//    public boolean parse(String jsonString) {
-//        try {
-//            JSONObject json = new JSONObject(jsonString);
-//            JSONArray robos = json.getJSONArray("robo");
-//
-//            for (int i = 0; i < robos.length(); i++) {
-//                JSONObject Robo = robos.getJSONObject(i);
-//                Robo p = new Robo();
-//                p.setNome(Robo.getString("nome"));
-//
-//                this.robos.add(p);
-//            }
-//
-//            return true;
-//        } catch (JSONException e) {
-//            Log.e(TAG, "parse: erro ao fazer parse do JSON: " + e.getMessage());
-//            return false;
-//        }
-//    }
+    public boolean parse(String jsonString) {
+        try {
+            JSONObject json = new JSONObject(jsonString);
+            JSONArray robos = json.getJSONArray("robo");
+
+            for (int i = 0; i < robos.length(); i++) {
+                JSONObject Robo = robos.getJSONObject(i);
+                Robo p = new Robo();
+                p.setNome(Robo.getString("nome"));
+
+                this.robos.add(p);
+            }
+
+            return true;
+        } catch (JSONException e) {
+            Log.e(TAG, "parse: erro ao fazer parse do JSON: " + e.getMessage());
+            return false;
+        }
+    }
 }

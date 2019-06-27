@@ -32,73 +32,74 @@ public class CombatesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_combates, container, false);
 
-//
-//        ListView lvRobo = (ListView) findViewById(R.id.lvRobos);
-//        DownloadDeDados down = new DownloadDeDados();
-//        down.execute(robots);
+
+        //lvRobos = findViewById(R.id.lvRobos);
+       // DownloadDeDados down = new DownloadDeDados();
+        //down.execute(robots);
 
     }
 
-//    private class DownloadDeDados extends AsyncTask<String, Void, String> {
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//            String json = downloadJson(strings[0]);
-//            if (json == null) {
-//                Log.e(TAG, "doInBackground: Erro baixando RSS");
-//            }
-//            return json;
-//        }
+    private class DownloadDeDados extends AsyncTask<String, Void, String> {
 
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            ParseJson parseJson = new ParseJson();
-//            parseJson.parse(s);
-//            robos = parseJson.getRobos();
+        @Override
+        protected String doInBackground(String... strings) {
+
+            String json = downloadJson(strings[0]);
+            if (json == null) {
+                Log.e(TAG, "doInBackground: Erro baixando RSS");
+            }
+            return json;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            ParseJson parseJson = new ParseJson();
+            parseJson.parse(s);
+            robos = parseJson.getRobos();
 
 //            RobosListAdapter robosListAdapter = new RobosListAdapter (CombatesFragment.this,
 //                    R.layout.activity_robos_list_adapter, parseJson.getRobos());
 //            lvRobos.setAdapter(robosListAdapter);
-//
-//        }
-//
-//        private String downloadJson(String urlString) {
-//            StringBuilder stringBuilder = new StringBuilder();
-//
-//            try {
-//                URL url = new URL(urlString);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                int resposta = connection.getResponseCode();
-//                Log.d(TAG, "downloadJson: O código de resposta foi: " + resposta);
-//
-//                BufferedReader reader = new BufferedReader(
-//                        new InputStreamReader(connection.getInputStream()));
-//
-//                int charsLidos;
-//                char[] inputBuffer = new char[500];
-//                while (true) {
-//                    charsLidos = reader.read(inputBuffer);
-//                    if (charsLidos < 0) {
-//                        break;
-//                    }
-//                    if (charsLidos > 0) {
-//                        stringBuilder.append(
-//                                String.copyValueOf(inputBuffer, 0, charsLidos));
-//                    }
-//                }
-//                reader.close();
-//                return stringBuilder.toString();
-//
-//            } catch (MalformedURLException e) {
-//                Log.e(TAG, "downloadJson: URL é inválida " + e.getMessage());
-//            } catch (IOException e) {
-//                Log.e(TAG, "downloadJson: Ocorreu um erro de IO ao baixar dados: "
-//                        + e.getMessage());
-//            }
-//            return null;
-//        }
-//    }
+
+        }
+
+        private String downloadJson(String urlString) {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                int resposta = connection.getResponseCode();
+                Log.d(TAG, "downloadJson: O código de resposta foi: " + resposta);
+
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                int charsLidos;
+                char[] inputBuffer = new char[500];
+                while (true) {
+                    charsLidos = reader.read(inputBuffer);
+                    if (charsLidos < 0) {
+                        break;
+                    }
+                    if (charsLidos > 0) {
+                        stringBuilder.append(
+                                String.copyValueOf(inputBuffer, 0, charsLidos));
+                    }
+                }
+                reader.close();
+                return stringBuilder.toString();
+
+            } catch (MalformedURLException e) {
+                Log.e(TAG, "downloadJson: URL é inválida " + e.getMessage());
+            } catch (IOException e) {
+                Log.e(TAG, "downloadJson: Ocorreu um erro de IO ao baixar dados: "
+                        + e.getMessage());
+            }
+            return null;
+        }
+    }
 
         }
 
