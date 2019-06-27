@@ -15,22 +15,22 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RobosListAdapter extends ArrayAdapter<Robo> {
+public class RobosListAdapter extends ArrayAdapter{
 
     private static final String TAG = "PokemonListAdapter";
     private final int layoutResource;
     private final LayoutInflater layoutInflater;
     private List<Robo> robos;
-    private TextView txtRobo1;
-    private TextView txtRobo2;
+
 
 
 
     public RobosListAdapter(Context context, int resource, List<Robo> robos) {
-        super(context, resource);
+       super(context, resource);
         this.layoutResource = resource;
         this.layoutInflater = LayoutInflater.from(context);
         this.robos = robos;
+
     }
 
 

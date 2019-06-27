@@ -1,5 +1,6 @@
 package com.catolicasc.combatcontrol;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,6 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+
 
 public class CombatesFragment extends Fragment {
 
@@ -30,12 +33,15 @@ public class CombatesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_combates, container, false);
+       View v =  inflater.inflate(R.layout.fragment_combates, container, false);
 
 
-        //lvRobos = findViewById(R.id.lvRobos);
-       // DownloadDeDados down = new DownloadDeDados();
-        //down.execute(robots);
+        lvRobos = v.findViewById(R.id.lvRobos);
+
+        DownloadDeDados down = new DownloadDeDados();
+        down.execute(robots);
+
+        return v;
 
     }
 
@@ -51,18 +57,19 @@ public class CombatesFragment extends Fragment {
             return json;
         }
 
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            ParseJson parseJson = new ParseJson();
-            parseJson.parse(s);
-            robos = parseJson.getRobos();
 
-//            RobosListAdapter robosListAdapter = new RobosListAdapter (CombatesFragment.this,
-//                    R.layout.activity_robos_list_adapter, parseJson.getRobos());
-//            lvRobos.setAdapter(robosListAdapter);
+//        @Override
+//        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+//            ParseJson parseJson = new ParseJson();
+//            parseJson.parse(s);
+//            robos = parseJson.getRobos();
 
-        }
+
+           // RobosListAdapter robosListAdapter = new RobosListAdapter(CombatesFragment.this, R.layout.activity_robos_list_adapter, parseJson.getRobos());
+           // lvRobos.setAdapter(robosListAdapter);
+
+
 
         private String downloadJson(String urlString) {
             StringBuilder stringBuilder = new StringBuilder();
