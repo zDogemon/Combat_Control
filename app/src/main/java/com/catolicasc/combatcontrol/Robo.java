@@ -1,20 +1,20 @@
 package com.catolicasc.combatcontrol;
-import java.io.Serializable;
 
-public class Robo implements Serializable{
+public class Robo{
 
-    private String nome;
+    private String robo1;
+    private String robo2;
 
-
-    public Robo() {
-
+    public Robo(String robo1, String robo2) {
+        this.robo1 = robo1;
+        this.robo2 = robo2;
     }
 
-    public String getNome() {
-        return nome;
+    public String getRobo1() {
+        return robo1;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getRobo2() {
+        return robo2;
     }
 }

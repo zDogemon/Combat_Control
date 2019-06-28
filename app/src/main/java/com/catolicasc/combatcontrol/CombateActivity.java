@@ -44,7 +44,7 @@ public class CombateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combate);
 
-        txtRobo1 = findViewById(R.id.txtRobo2);
+        txtRobo1 = findViewById(R.id.txtRobo1);
         txtRobo2 = findViewById(R.id.txtRobo2);
         txtRobo1Dano = findViewById(R.id.txtRobo1Dano);
         txtRobo2Dano = findViewById(R.id.txtRobo2Dano);
@@ -72,6 +72,12 @@ public class CombateActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Intent i = getIntent();
+        String robo1 = i.getStringExtra("robo1");
+        String robo2 = i.getStringExtra("robo2");
+        txtRobo1.setText(robo1);
+        txtRobo2.setText(robo2);
 
         updateCountdownText();
         startTimer();

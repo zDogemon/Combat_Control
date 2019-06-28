@@ -2,13 +2,9 @@ package com.catolicasc.combatcontrol;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,18 +17,26 @@ public class LobbyActivity extends AppCompatActivity {
     private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
-    private Button btnEntar;
+    private Button btnEntrar;
     private TextView txtCronometro;
     private Button btnVoltar;
+
+    String robo1a;
+    String robo2a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby_);
 
-        btnEntar = findViewById(R.id.btnEntrar);
+        btnEntrar = findViewById(R.id.btnEntrar);
         txtCronometro = findViewById(R.id.txtCronometro);
         btnVoltar = findViewById(R.id.btnVoltar);
+
+        Intent intent = getIntent();
+        robo1a = intent.getStringExtra("robo1");
+        robo2a = intent.getStringExtra("robo2");
+
         startTimer();
         startBotao();
         voltar();
@@ -49,10 +53,13 @@ public class LobbyActivity extends AppCompatActivity {
     }
 
     private void startBotao() {
-        btnEntar.setOnClickListener(new View.OnClickListener() {
+        btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LobbyActivity.this, CombateActivity.class);
+                i.putExtra("robo1", robo1a);
+                i.putExtra("robo2", robo2a);
+                pauseTimer();
                 startActivity(i);
                 finish();
             }
@@ -71,11 +78,15 @@ public class LobbyActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 startActivity(new Intent(LobbyActivity.this, CombateActivity.class));
-                btnEntar.setVisibility(View.INVISIBLE);
+                btnEntrar.setVisibility(View.INVISIBLE);
                 finish();
             }
 
         }.start();
+    }
+
+    private void pauseTimer() {
+        mCountDownTimer.cancel();
     }
 
     private void updateCountdownText() {

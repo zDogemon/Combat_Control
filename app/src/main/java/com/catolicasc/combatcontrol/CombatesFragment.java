@@ -1,6 +1,6 @@
 package com.catolicasc.combatcontrol;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,94 +26,65 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class CombatesFragment extends Fragment {
 
     private static final String TAG = "MainActivity";
     private ListView lvRobos;
-    private static final String robots = "https://github.com/zDogemon/Combat_Control/blob/master/robots.json";
-    private List<Robo> robos;
+    private static final String robots = "https://raw.githubusercontent.com/zDogemon/Combat_Control/master/robots.json";
+    private ArrayList<Robo> robos;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View v =  inflater.inflate(R.layout.fragment_combates, container, false);
+        View v = inflater.inflate(R.layout.fragment_combates, container, false);
 
-
+        robos = new ArrayList<>();
         lvRobos = v.findViewById(R.id.lvRobos);
 
-        DownloadDeDados down = new DownloadDeDados();
-        down.execute(robots);
 
+        DataDownload dataDownload = new DataDownload();
+        String jsonString = null;
+        try {
+            jsonString = dataDownload.execute(robots).get();
+            JSONTokener jsonTokener = new JSONTokener(jsonString);
+            JSONObject jsonObject = new JSONObject(jsonTokener);
+            JSONArray jsonArray = jsonObject.getJSONArray("partidas");
+            for(int i = 0;i<jsonArray.length();i++) {
+                Robo robo = new Robo(jsonArray.getJSONObject(i).getString("robot1"),jsonArray.getJSONObject(i).getString("robot2"));
+                robos.add(robo);
+            }
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RobosListAdapter robosListAdapter = new RobosListAdapter(getContext(), R.layout.activity_robos_list_adapter, robos);
+        lvRobos.setAdapter(robosListAdapter);
+        lvRobos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView c = (TextView) view.findViewById(R.id.txtRobo1);
+                String robo1x = c.getText().toString();
+
+                TextView c2 = (TextView) view.findViewById(R.id.txtRobo2);
+                String robo2x = c2.getText().toString();
+
+                Intent i = new Intent(getContext(), LobbyActivity.class);
+                i.putExtra("robo1", robo1x);
+                i.putExtra("robo2", robo2x);
+                startActivity(i);
+            }
+        });
         return v;
 
     }
-
-    private class DownloadDeDados extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-
-            String json = downloadJson(strings[0]);
-            if (json == null) {
-                Log.e(TAG, "doInBackground: Erro baixando RSS");
-            }
-            return json;
-        }
-
-
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//            ParseJson parseJson = new ParseJson();
-//            parseJson.parse(s);
-//            robos = parseJson.getRobos();
-
-
-           // RobosListAdapter robosListAdapter = new RobosListAdapter(CombatesFragment.this, R.layout.activity_robos_list_adapter, parseJson.getRobos());
-           // lvRobos.setAdapter(robosListAdapter);
-
-
-
-        private String downloadJson(String urlString) {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            try {
-                URL url = new URL(urlString);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                int resposta = connection.getResponseCode();
-                Log.d(TAG, "downloadJson: O código de resposta foi: " + resposta);
-
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream()));
-
-                int charsLidos;
-                char[] inputBuffer = new char[500];
-                while (true) {
-                    charsLidos = reader.read(inputBuffer);
-                    if (charsLidos < 0) {
-                        break;
-                    }
-                    if (charsLidos > 0) {
-                        stringBuilder.append(
-                                String.copyValueOf(inputBuffer, 0, charsLidos));
-                    }
-                }
-                reader.close();
-                return stringBuilder.toString();
-
-            } catch (MalformedURLException e) {
-                Log.e(TAG, "downloadJson: URL é inválida " + e.getMessage());
-            } catch (IOException e) {
-                Log.e(TAG, "downloadJson: Ocorreu um erro de IO ao baixar dados: "
-                        + e.getMessage());
-            }
-            return null;
-        }
-    }
-
-        }
-
+}

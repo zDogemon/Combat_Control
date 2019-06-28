@@ -33,18 +33,17 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-//
-////        View headerView = navigationView.getHeaderView(0);
-////        TextView nomeEmail = (TextView) headerView.findViewById(R.id.nomeEmail);
-////        nomeEmail.setText(email);
 
+        Intent intent = getIntent();
+        String usuario = intent.getStringExtra("user");
+
+        //nomeEmail = findViewById(R.id.nomeEmail);
+        //nomeEmail.setText(usuario);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -77,15 +76,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         if (id == R.id.stringLogout){
             Connection.logOut();
@@ -99,16 +91,14 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_combates) {
             this.setTitle("Combates");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CombatesFragment()).commit();
         } else if (id == R.id.nav_historico) {
-            //this.setTitle("Histórico");
-            //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
-            startActivity(new Intent(MainActivity.this, LobbyActivity.class));
+            this.setTitle("Histórico");
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoricoFragment()).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
