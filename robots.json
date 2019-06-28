@@ -1,14 +1,17 @@
-[
-    {
-        "robot1": "minotauro1",
-        "robot2": "minotauro2"
-    },
-    {
-        "robot1": "minotauro3",
-        "robot2": "minotauro4"
-    },
-    {
-        "robot1": "minotauro5",
-        "robot2": "minotauro6"
-    }
-]
+{
+    "partidas": 
+    [
+        {
+            "robot1": "minotauro1",
+            "robot2": "minotauro2"
+        },
+        {
+            "robot1": "minotauro3",
+            "robot2": "minotauro4"
+        },
+        {
+            "robot1": "minotauro5",
+            "robot2": "minotauro6"
+        }
+    ]
+}
