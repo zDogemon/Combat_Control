@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private TextView resetSenha;
 
-    private String emailGlobal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +56,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
         eventoClicks();
     }
 
@@ -83,7 +80,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(final String email, String senha) {
-        emailGlobal = email;
         try {
             auth.signInWithEmailAndPassword(email, senha)
                     .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -91,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                //i.putExtra("user", emailGlobal);
+                                i.putExtra("user", email);
                                 startActivity(i);
                             } else {
                                 alert("E-mail ou senha inválidos");
