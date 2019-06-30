@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class LobbyActivity extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 180000;
+    private static final long START_TIME_IN_MILLIS = 300000;
     private CountDownTimer mCountDownTimer;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 

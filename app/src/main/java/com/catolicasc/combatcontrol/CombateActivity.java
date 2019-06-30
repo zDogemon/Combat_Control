@@ -134,6 +134,8 @@ public class CombateActivity extends AppCompatActivity {
         btnRobo1Nocaute.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 nocaute = true;
+                Intent it = new Intent(CombateActivity.this, NocauteActivity.class);
+                startActivity(it);
             }
         });
 
@@ -141,27 +143,15 @@ public class CombateActivity extends AppCompatActivity {
         btnRobo2Nocaute.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 nocaute = true;
+                Intent it = new Intent(CombateActivity.this, NocauteActivity.class);
+                startActivity(it);
             }
         });
 
         // Botão de encerrar a partida
         btnEncerrarPartida.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent it = new Intent(CombateActivity.this, EncerramentoActivity.class);
-                int pontuacao1 = (Integer.parseInt(txtRobo1Agressividade.getText().toString())) + (Integer.parseInt(txtRobo1Dano.getText().toString()));
-                int pontuacao2 = (Integer.parseInt(txtRobo2Agressividade.getText().toString())) + (Integer.parseInt(txtRobo2Dano.getText().toString()));
-                if (pontuacao1 > pontuacao2) {
-                    it.putExtra("vencedor", txtRobo1.getText().toString());
-                } else {
-                    it.putExtra("vencedor", txtRobo2.getText().toString());
-                }
-                it.putExtra("pontuacao1", pontuacao1 + "");
-                it.putExtra("pontuacao2", pontuacao2 + "");
-                if (nocaute == true) it.putExtra("nocaute", "Nocaute!");
-                else it.putExtra("nocaute", " ");
-                
-                CombateActivity.this.finish();
-                startActivity(it);
+                encerrarPartida();
             }
         });
 
@@ -208,4 +198,31 @@ public class CombateActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nocaute = Nocaute.getInstance().nocaute;
+        if (nocaute == true){
+            encerrarPartida();
+        }
+    }
+
+    private void encerrarPartida(){
+        Intent it = new Intent(CombateActivity.this, EncerramentoActivity.class);
+        int pontuacao1 = (Integer.parseInt(txtRobo1Agressividade.getText().toString())) + (Integer.parseInt(txtRobo1Dano.getText().toString()));
+        int pontuacao2 = (Integer.parseInt(txtRobo2Agressividade.getText().toString())) + (Integer.parseInt(txtRobo2Dano.getText().toString()));
+        if (pontuacao1 > pontuacao2) {
+            it.putExtra("vencedor", txtRobo1.getText().toString());
+        } else {
+            it.putExtra("vencedor", txtRobo2.getText().toString());
+        }
+        it.putExtra("pontuacao1", pontuacao1 + "");
+        it.putExtra("pontuacao2", pontuacao2 + "");
+        if (nocaute == true) it.putExtra("nocaute", "Nocaute!");
+        else it.putExtra("nocaute", " ");
+
+        Nocaute.getInstance().nocaute = false;
+        finish();
+        startActivity(it);
+    }
 }

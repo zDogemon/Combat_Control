@@ -15,7 +15,6 @@
         android:layout_marginEnd="25dp"
         android:src="@drawable/ic_logo3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars[3]" />
@@ -106,8 +105,8 @@
         android:id="@+id/resetSennha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="48dp"
         android:text="Esqueceu sua senha?"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
