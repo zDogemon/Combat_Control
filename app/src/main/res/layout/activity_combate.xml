@@ -23,7 +23,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/txtRobo2"
+            android:id="@+id/txtRobo2LV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="250dp"
@@ -57,7 +57,7 @@
             android:text="Dano"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRobo1" />
+            app:layout_constraintTop_toBottomOf="@+id/txtRobo1LV" />
 
         <TextView
             android:id="@+id/textView6"
@@ -68,7 +68,7 @@
             android:text="Dano"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtRobo2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtRobo2LV" />
 
         <TextView
             android:id="@+id/txtAgressividade"
@@ -234,7 +234,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnPararCronometro" />
 
         <TextView
-            android:id="@+id/txtRobo1"
+            android:id="@+id/txtRobo1LV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"

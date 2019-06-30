@@ -53,8 +53,8 @@ public class RobosListAdapter extends ArrayAdapter {
         final TextView robo2;
 
         ViewHolder(View v) {
-            this.robo1 = v.findViewById(R.id.txtRobo1);
-            this.robo2 = v.findViewById(R.id.txtRobo2);
+            this.robo1 = v.findViewById(R.id.txtRobo1LV);
+            this.robo2 = v.findViewById(R.id.txtRobo2LV);
         }
     }
 }

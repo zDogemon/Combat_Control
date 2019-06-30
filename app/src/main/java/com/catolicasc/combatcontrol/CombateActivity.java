@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -44,8 +45,8 @@ public class CombateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combate);
 
-        txtRobo1 = findViewById(R.id.txtRobo1);
-        txtRobo2 = findViewById(R.id.txtRobo2);
+        txtRobo1 = findViewById(R.id.txtRobo1LV);
+        txtRobo2 = findViewById(R.id.txtRobo2LV);
         txtRobo1Dano = findViewById(R.id.txtRobo1Dano);
         txtRobo2Dano = findViewById(R.id.txtRobo2Dano);
         txtRobo1Agressividade = findViewById(R.id.txtRobo1Agressividade);
@@ -220,6 +221,16 @@ public class CombateActivity extends AppCompatActivity {
         it.putExtra("pontuacao2", pontuacao2 + "");
         if (nocaute == true) it.putExtra("nocaute", "Nocaute!");
         else it.putExtra("nocaute", " ");
+
+        DAL dal = new DAL(CombateActivity.this);
+
+        if (dal.insert(txtRobo1.getText().toString(),  txtRobo2.getText().toString(), pontuacao1+"", pontuacao2+"")) {
+            Toast.makeText(CombateActivity.this,
+                    "Registro Inserido com sucesso!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(CombateActivity.this,
+                    "Erro ao inserir registro!", Toast.LENGTH_LONG).show();
+        }
 
         Nocaute.getInstance().nocaute = false;
         finish();
