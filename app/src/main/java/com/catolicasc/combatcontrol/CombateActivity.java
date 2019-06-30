@@ -159,9 +159,9 @@ public class CombateActivity extends AppCompatActivity {
                 it.putExtra("pontuacao2", pontuacao2 + "");
                 if (nocaute == true) it.putExtra("nocaute", "Nocaute!");
                 else it.putExtra("nocaute", " ");
-
-                startActivity(it);
+                
                 CombateActivity.this.finish();
+                startActivity(it);
             }
         });
 
@@ -200,6 +200,12 @@ public class CombateActivity extends AppCompatActivity {
         String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
 
         txtCronometro.setText(timeLeftFormatted);
+    }
+
+    @Override
+    public void onBackPressed() {
+        pauseTimer();
+        finish();
     }
 
 }

@@ -14,7 +14,6 @@ public class LobbyActivity extends AppCompatActivity {
 
     private static final long START_TIME_IN_MILLIS = 180000;
     private CountDownTimer mCountDownTimer;
-    private boolean mTimerRunning;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
     private Button btnEntrar;
@@ -46,8 +45,7 @@ public class LobbyActivity extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LobbyActivity.this, MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
     }
@@ -65,7 +63,6 @@ public class LobbyActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void startTimer() {
         mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
@@ -87,6 +84,12 @@ public class LobbyActivity extends AppCompatActivity {
 
     private void pauseTimer() {
         mCountDownTimer.cancel();
+    }
+
+    @Override
+    public void onBackPressed() {
+        pauseTimer();
+        finish();
     }
 
     private void updateCountdownText() {
