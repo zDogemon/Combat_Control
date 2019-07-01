@@ -4,7 +4,10 @@ Aplicativo desenvolvido para a disciplina de Desenvolvimento Mobile, da graduaç
 
 # Principais funcionalidades
 
-- Agendamento de combates
+- Autenticação de usuários
+- Agendamento de combates *
 - Combate em tempo real
-- Pontuação sincronizada entre todos os juízes
+- Pontuação sincronizada entre todos os juízes * 
 - Histórico de combates
+
+*: Funcionalidade em desenvolvimento / não implementada
