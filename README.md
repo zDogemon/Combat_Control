@@ -5,6 +5,7 @@ Aplicativo desenvolvido para a disciplina de Desenvolvimento Mobile, da graduaç
 Essas são as funcionalidades que já foram implementadas e estão funcionando corretamente.
 
 - Autenticação de usuários
+- Listagem de combates
 - Combate em tempo real
 - Histórico de combates
 
