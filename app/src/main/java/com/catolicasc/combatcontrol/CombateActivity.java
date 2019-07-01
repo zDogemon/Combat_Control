@@ -225,11 +225,10 @@ public class CombateActivity extends AppCompatActivity {
         DAL dal = new DAL(CombateActivity.this);
 
         if (dal.insert(txtRobo1.getText().toString(),  txtRobo2.getText().toString(), pontuacao1+"", pontuacao2+"")) {
-            Toast.makeText(CombateActivity.this,
-                    "Registro Inserido com sucesso!", Toast.LENGTH_LONG).show();
+
         } else {
             Toast.makeText(CombateActivity.this,
-                    "Erro ao inserir registro!", Toast.LENGTH_LONG).show();
+                    "Erro ao salvar no histórico", Toast.LENGTH_LONG).show();
         }
 
         Nocaute.getInstance().nocaute = false;
